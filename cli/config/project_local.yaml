@@ -1,0 +1,6 @@
+depends: qa
+web:
+    port: 8080
+service:
+    google:
+        enabled: true

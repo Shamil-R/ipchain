@@ -1,0 +1,8 @@
+version: '3.6'
+
+services:
+  ipchain:
+    container_name: ipchain
+    build:
+      context: .
+      dockerfile: Dockerfile

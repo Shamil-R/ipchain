@@ -1,0 +1,8 @@
+depends: global
+project:
+    name: QaProject
+    debug: true
+service:
+    google:
+        host: http://qa.google.com
+        enabled: false
