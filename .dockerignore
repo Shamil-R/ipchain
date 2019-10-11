@@ -1,5 +1,4 @@
-bin
-pkg
-src
-cli/ipchain_go
+go_build_main_go
+.idea
+vendore
 docker-compose.yml

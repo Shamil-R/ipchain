@@ -1,7 +1,7 @@
 package main
 
 import (
-	"./config"
+	"github.com/Shamil-R/ipchain/config"
 )
 
 func main() {

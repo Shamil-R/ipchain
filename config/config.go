@@ -78,5 +78,5 @@ func getEnv() string {
 }
 
 func getPath(env string) string {
-	return "cli/config/project_" + env + ".yaml"
+	return "config/project_" + env + ".yaml"
 }
