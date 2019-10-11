@@ -1,16 +1,22 @@
 FROM golang AS builder
 
-ADD https://github.com/golang/dep/releases/download/v0.4.1/dep-linux-amd64 /usr/bin/dep
-RUN chmod +x /usr/bin/dep
+RUN go get -d github.com/golang/dep/cmd/dep && \
+    go install github.com/golang/dep/cmd/dep
 
-WORKDIR $GOPATH/src/ipchain/
+WORKDIR $GOPATH/src/github.com/Shamil-R/ipchain
+
 COPY Gopkg.toml Gopkg.lock ./
-RUN dep ensure --vendor-only
+
+RUN dep ensure --vendor-only -v
+
 COPY . ./
-RUN CGO_ENABLED=0 go build -o /ipchain ./cli
+
+RUN CGO_ENABLED=0 go build -o /ipchain ./
+
 
 FROM golang:alpine
 
 COPY --from=builder /ipchain .
+COPY --from=builder $GOPATH/src/github.com/Shamil-R/ipchain/config ./config
 
-CMD [ "./ipchain" ]
+CMD [ "./ipchain", "qa" ]
